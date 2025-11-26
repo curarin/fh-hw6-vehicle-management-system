@@ -54,7 +54,7 @@ public class CarHandler {
         }
         for (Car car : this.allCars) {
             if (car.getCarPrice() >= lowerBoundPrice && car.getCarPrice() <= upperBoundPrice) {
-                System.out.printf("%d | %f,- EUR | %s | %s\n", car.getCarId(), car.getCarPrice(), car.getCarBrand(), car.getCarModel());
+                System.out.printf("%d | %.2f,- EUR | %s | %s\n", car.getCarId(), car.getCarPrice(), car.getCarBrand(), car.getCarModel());
             }
         }
 

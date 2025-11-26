@@ -24,28 +24,33 @@ public class Main {
                     int filterChoice = inputHandler.getFilterInput();
                     switch (filterChoice) {
                         case 1 -> {
-                            carHandler.printCarsByType(CarType.PASSENGER_CAR);
+                            CarType wantedCarType = inputHandler.getCarTypeInput();
+                            System.out.println("List of all cars with Car Type " + wantedCarType);
+                            carHandler.printCarsByType(wantedCarType);
                         }
                         case 2 -> {
-                            int choice = 3;
+                            int choice = inputHandler.getCarPriceBucketInput();
+                            System.out.println("List of all cars with chosen Price Bucket");
                             carHandler.printCarsByPrice(choice);
                         }
                         case 3 -> {
-                            int wantedYear = 2018;
+                            int wantedYear = inputHandler.getCarManufacturerYearInput();
                             carHandler.printCarsByManufacturerYear(wantedYear);
                         }
                         case 4 -> {
-                            int maximumMileage = 50000;
+                            int maximumMileage = inputHandler.getCarMileageInput();
                             carHandler.printCarsByMileage(maximumMileage);
                         }
                     }
                 }
                 case 2 -> {
-                    double changeOfPrice = 0.1;
-                    carHandler.changePriceByType(CarType.MOTORCYCLE, changeOfPrice);
+                    double changeOfPrice = inputHandler.getPriceChangeInput();
+                    CarType wantedCarType = inputHandler.getCarTypeInput();
+                    carHandler.changePriceByType(wantedCarType, changeOfPrice);
                 }
                 case 3 -> {
                     file.writeCarDataToCsv(allCars);
+                    isRunning = false;
                 }
                 case 0 -> isRunning = false;
             }

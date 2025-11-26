@@ -33,16 +33,81 @@ public class InputHandler {
     public int getFilterInput() {
         Scanner scanner = new Scanner(System.in);
         String message = """
-                Enter filter option below
+                \n
+                Stage 1 Menu: Enter filter option below
                 
                 (1) Filter by Car Type
                 (2) Filter by Car Price Bucket
                 (3) Filter by Car Manufacturer Year
                 (4) Filter by Car Mileage
-                
-                --> ...
                 """;
         System.out.println(message);
         return scanner.nextInt();
+    }
+
+    public CarType getCarTypeInput() {
+        Scanner scanner = new Scanner(System.in);
+        String message = """
+                Stage 2 Menu: Which Car Type do you want?
+                (1) PKW
+                (2) Transporter
+                (3) Motorcycle
+        """;
+        System.out.println(message);
+        int carTypeChoice = scanner.nextInt();
+        switch (carTypeChoice) {
+            case 1 -> {
+                return CarType.PASSENGER_CAR;
+            }
+            case 2 -> {
+                return CarType.TRANSPORTER;
+            }
+            case 3 -> {
+                return CarType.MOTORCYCLE;
+            }
+            default ->  throw new IllegalArgumentException("Invalid car type");
+
+        }
+    }
+
+    public int getCarPriceBucketInput() {
+        Scanner scanner = new Scanner(System.in);
+        String message = """
+                Stage 2 Menu: Which Car Price Bucket do you want?
+                
+                (1) 1 - 9,9k
+                (2) 10k - 14,9k
+                (3) 15k - 19,9k
+                (4) 20k - 29,9k
+                """;
+        System.out.println(message);
+        return scanner.nextInt();
+    }
+
+    public int getCarManufacturerYearInput() {
+        Scanner scanner = new Scanner(System.in);
+        String message = """
+                Stage 2 Menu: Which Car Manufacturer Year do you want?
+                """;
+        System.out.println(message);
+        return scanner.nextInt();
+    }
+
+    public int getCarMileageInput() {
+        Scanner scanner = new Scanner(System.in);
+        String message = """
+                Stage 2 Menu: Which Car Mileage do you want?
+                """;
+        System.out.println(message);
+        return scanner.nextInt();
+    }
+
+    public double getPriceChangeInput() {
+        Scanner scanner = new Scanner(System.in);
+        String message = """
+                Stage 2 Menu: Amount of discount to apply (e.g. 0.15 for 15%)
+                """;
+        System.out.println(message);
+        return scanner.nextDouble();
     }
 }
