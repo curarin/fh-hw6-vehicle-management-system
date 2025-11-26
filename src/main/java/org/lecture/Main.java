@@ -13,11 +13,13 @@ public class Main {
         ArrayList<Car> allCars = file.parseFile(fileList);
         CarHandler carHandler = new CarHandler(allCars);
         InputHandler inputHandler = new InputHandler();
+        DataAnalysis analyticsHandler = new DataAnalysis(allCars);
         boolean isRunning = true;
 
         inputHandler.printWelcomeScreen();
 
         do {
+            System.out.println("---------------------------------------------------");
             int mainMenuChoice = inputHandler.getMainInput();
             switch (mainMenuChoice) {
                 case 1 -> {
@@ -51,6 +53,14 @@ public class Main {
                 case 3 -> {
                     file.writeCarDataToCsv(allCars);
                     isRunning = false;
+                }
+                case 4 -> {
+                    int analysisInput = inputHandler.getAnalysisInput();
+
+                    switch (analysisInput) {
+                        case 1 -> analyticsHandler.calculateMeanPriceAllCars();
+                        case 2 -> analyticsHandler.calculateCarCountPerType();
+                    }
                 }
                 case 0 -> isRunning = false;
             }

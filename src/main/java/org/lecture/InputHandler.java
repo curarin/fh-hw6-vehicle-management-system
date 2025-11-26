@@ -25,8 +25,21 @@ public class InputHandler {
                 (1) Filter & Print data to console
                 (2) Change data
                 (3) Export data
+                (4) Data Analysis
                 (0) Exit
                 """;
+        System.out.println(message);
+        return scanner.nextInt();
+    }
+
+    public int getAnalysisInput() {
+        Scanner scanner = new Scanner(System.in);
+        String message = """
+                What kind of analysis is needed?
+                
+                (1) Mean Price of cars
+                (2) Count of Car Types
+        """;
         System.out.println(message);
         return scanner.nextInt();
     }
