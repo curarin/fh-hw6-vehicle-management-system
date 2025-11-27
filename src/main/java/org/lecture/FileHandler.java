@@ -52,6 +52,7 @@ public class FileHandler {
         Car currentCar = new Car();
         int i = 0;
         try {
+            System.out.println(csvValues);
             for (String value: csvValues) {
                 if (i % csvColumnCount == 0) {
                     currentCar = new Car();

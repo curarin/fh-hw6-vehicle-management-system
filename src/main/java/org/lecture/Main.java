@@ -22,6 +22,7 @@ public class Main {
         do {
             System.out.println("---------------------------------------------------");
             int mainMenuChoice = inputHandler.getMainInput();
+
             switch (mainMenuChoice) {
                 case 1 -> {
                     int filterChoice = inputHandler.getFilterInput();

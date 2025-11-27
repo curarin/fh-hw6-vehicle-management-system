@@ -1,7 +1,9 @@
 package org.lecture;
 
 import javax.management.InvalidAttributeValueException;
+import java.security.InvalidParameterException;
 import java.time.DateTimeException;
+import java.time.Year;
 import java.util.Locale;
 
 public class Car {
@@ -18,12 +20,10 @@ public class Car {
     }
 
     public void setCarId(String carId) throws Exception {
-        try {
-            if (Integer.parseInt(carId) > 0) {
-                this.carId = Integer.parseInt(carId);
-            }
-        } catch (Exception e) {
-            throw new Exception("Invalid car id: " + carId);
+        if (Integer.parseInt(carId) > 0) {
+            this.carId = Integer.parseInt(carId);
+        } else {
+            throw new Exception("Invalid car id set: " + carId);
         }
     }
 
@@ -31,7 +31,7 @@ public class Car {
         return carType;
     }
 
-    public void setCarType(String carType) {
+    public void setCarType(String carType) throws Exception {
         if (carType.equalsIgnoreCase("PKW")) {
             this.carType = CarType.PASSENGER_CAR;
         } else if (carType.equalsIgnoreCase("TRANSPORTER")) {
@@ -40,8 +40,7 @@ public class Car {
             this.carType = CarType.MOTORCYCLE;
         } else {
             this.carType = CarType.PASSENGER_CAR;
-            System.err.println("Invalid car type: " + carType);
-            System.err.println("Default set to " + CarType.PASSENGER_CAR);
+            throw new Exception("Invalid car type: " + carType + " | Default set: " + this.carType);
         }
     }
 
@@ -50,14 +49,11 @@ public class Car {
     }
 
     public void setCarManufacturerYear(String carManufacturerYear) throws Exception{
-        try {
-            if (Integer.parseInt(carManufacturerYear) > 1900 && Integer.parseInt(carManufacturerYear) <= 2050) {
+        // Source für aktuelles Jahr: https://stackoverflow.com/questions/136419/get-integer-value-of-the-current-year-in-java
+        if (Integer.parseInt(carManufacturerYear) > 1900 && Integer.parseInt(carManufacturerYear) <= Year.now().getValue()) {
                 this.carManufacturerYear = Integer.parseInt(carManufacturerYear);
-            } else {
-                throw new DateTimeException("Invalid manufacturer year: " + carManufacturerYear);
-            }
-        } catch (Exception e) {
-            throw new Exception("Invalid car manufacturer year: " + carManufacturerYear);
+        } else {
+                throw new Exception("Invalid manufacturer year: " + carManufacturerYear);
         }
     }
 
@@ -66,13 +62,9 @@ public class Car {
     }
 
     public void setCarMileage(String carMileage) throws Exception {
-        try {
-            if (Integer.parseInt(carMileage) > 0) {
-                this.carMileage = Integer.parseInt(carMileage);
-            } else {
-                throw new javax.naming.directory.InvalidAttributeValueException("Invalid car mileage: " + carMileage);
-            }
-        } catch (Exception e) {
+        if (Integer.parseInt(carMileage) > 0) {
+            this.carMileage = Integer.parseInt(carMileage);
+        } else {
             throw new Exception("Invalid car mileage: " + carMileage);
         }
     }
@@ -82,14 +74,10 @@ public class Car {
     }
 
     public void setCarPrice(String carPrice) throws Exception {
-        try {
-            if (Double.parseDouble(carPrice) > 0) {
-                this.carPrice = Double.parseDouble(carPrice);
-            } else {
-                throw new InvalidAttributeValueException("Invalid car price - price has to be > 0 - we want to earn money, doh.");
-            }
-        } catch (Exception e) {
-            throw new Exception("Invalid car price: " + carPrice);
+        if (Double.parseDouble(carPrice) > 0) {
+            this.carPrice = Double.parseDouble(carPrice);
+        } else {
+            throw new Exception("Invalid car price - price has to be > 0 - we want to earn money, doh.");
         }
     }
 
