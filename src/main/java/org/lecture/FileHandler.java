@@ -13,9 +13,11 @@ public class FileHandler {
     Path filePath;
     String csvColumnNames;
     int csvColumnCount = 0;
+    String delimiter;
 
-    public FileHandler(Path filePath) {
+    public FileHandler(Path filePath, String delimiter) {
         this.filePath = filePath;
+        this.delimiter = delimiter;
     }
 
     public ArrayList<String> readFile() {
@@ -25,14 +27,14 @@ public class FileHandler {
             int i = 0;
             while ((line = reader.readLine()) != null) {
                 if (i == 0) {
-                    String[] fields = line.split(";");
+                    String[] fields = line.split(this.delimiter);
                     csvColumnNames = line;
                     for (String value: fields) {
                         csvColumnCount++;
                         i++;
                     }
                 } else if (i > 0) {
-                    String[] fields = line.split(";");
+                    String[] fields = line.split(this.delimiter);
                     for (String value : fields) {
                         csvLines.add(value);
                         i++;
