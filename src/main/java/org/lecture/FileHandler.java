@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 public class FileHandler {
     Path filePath;
+    String csvColumnNames;
     int csvColumnCount = 0;
 
     public FileHandler(Path filePath) {
@@ -25,6 +26,7 @@ public class FileHandler {
             while ((line = reader.readLine()) != null) {
                 if (i == 0) {
                     String[] fields = line.split(";");
+                    csvColumnNames = line;
                     for (String value: fields) {
                         csvColumnCount++;
                         i++;
@@ -77,6 +79,8 @@ public class FileHandler {
     public void writeCarDataToCsv(ArrayList<Car> allCars) {
         Path path = Paths.get("src", "main", "resources", "fahrzeuge_updated.csv");
         try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(path.toFile()))) {
+            bufferedWriter.write(this.csvColumnNames);
+            bufferedWriter.newLine();
             for(Car car : allCars) {
                 bufferedWriter.write(car.toString());
                 bufferedWriter.newLine();
