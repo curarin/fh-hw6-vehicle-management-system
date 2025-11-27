@@ -8,7 +8,8 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) throws Exception {
         Path path = Paths.get("src", "main", "resources", "fahrzeuge.csv");
-        FileHandler file = new FileHandler(path);
+        String delimiter = ";";
+        FileHandler file = new FileHandler(path, delimiter);
         ArrayList<String> fileList = file.readFile();
         ArrayList<Car> allCars = file.parseFile(fileList);
         CarHandler carHandler = new CarHandler(allCars);
