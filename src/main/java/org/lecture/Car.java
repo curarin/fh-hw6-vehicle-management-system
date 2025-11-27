@@ -111,7 +111,7 @@ public class Car {
 
     @Override
     public String toString() {
-        return String.format(Locale.US, "%d;%s;%s;%s;%d;%d;%.2f", this.carId, this.carBrand, this.carModel, this.carType, this.carManufacturerYear, this.carMileage, this.carPrice);
+        return String.format(Locale.US, "%d;%s;%s;%s;%d;%d;%.2f", this.carId, this.carBrand, this.carModel, this.carType.getGermanName(), this.carManufacturerYear, this.carMileage, this.carPrice);
     }
 
 }
