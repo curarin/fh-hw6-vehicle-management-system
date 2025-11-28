@@ -22,7 +22,9 @@ public class InputHandler {
                     :   '  |--"  ---'      `----'    `----'    `----'    `----'    `----'    `----'  |   ;/          \s
                      \\   \\ ;                                                                         '---'           \s
                       '---"                                                                                          \s
-                ^
+                
+                \t\t\tVehicle Management System
+                \t\t\tby: Paul
                 """;
         System.out.println(message);
     }

@@ -20,7 +20,7 @@ public class Main {
         inputHandler.printWelcomeScreen();
 
         do {
-            System.out.println("---------------------------------------------------");
+            System.out.println("------------------------------------------------------------------------------------------------------");
             int mainMenuChoice = inputHandler.getMainInput();
 
             switch (mainMenuChoice) {
