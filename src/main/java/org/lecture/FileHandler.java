@@ -39,15 +39,15 @@ public class FileHandler {
                     this.csvColumnCount = fields.length;
                     csvLineCounter++;
                 } else if (csvLineCounter > 0) {
-                    // ToDo > wenn eine String Line a.) falschen Delimiter hat oder b.) Null Values hat
-                    // ToDo > dann Exit aus dem csvLineCounter Iteration mit continue
-                    if (hasCorrectDelimiter(line)) {
+                    // Überprüfen, ob der korrekte Delimiter vorhanden ist als auch alle Werte befüllt sind
+                    // Mittels helper Functions
+                    if (hasCorrectDelimiter(line) && !hasNullValues(line)) {
                         String[] fields = line.split(this.delimiter);
                         csvLines.addAll(Arrays.asList(fields));
                         csvLineCounter++;
                     } else {
                         int errorFoundInLineNumber = csvLineCounter + 1;
-                        System.err.println("Error reading csv line " + errorFoundInLineNumber + ". Wrong delimiter found.");
+                        System.err.println("Error reading csv line " + errorFoundInLineNumber);
                     }
                 }
             }
@@ -70,6 +70,17 @@ public class FileHandler {
         }
         return countDelimiterFound <= 1;
     }
+
+    private boolean hasNullValues(String line) {
+        String[] fields = line.split(this.delimiter);
+        for (String field : fields) {
+            if (field.isEmpty()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     public ArrayList<Car> parseFile(ArrayList<String> csvValues) {
         ArrayList<Car> cars = new ArrayList<>();
