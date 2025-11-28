@@ -58,7 +58,6 @@ public class Main {
                 }
                 case 4 -> {
                     int analysisInput = inputHandler.getAnalysisInput();
-
                     switch (analysisInput) {
                         case 1 -> analyticsHandler.calculateMeanPriceAllCars();
                         case 2 -> {

@@ -5,14 +5,24 @@ import java.util.Scanner;
 public class InputHandler {
 
     public void printWelcomeScreen() {
-        // Wollt mal was neues machen -> https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Wroom+Wroom+Wroom&x=none&v=4&h=4&w=80&we=false
+        // Wollt mal was neues machen -> https://patorjk.com/software/taag/#p=display&f=3D+Diagonal&t=Wroooooom&x=none&v=4&h=4&w=80&we=false
         String message = """
-                 __      __                                 __      __                                 __      __                              \s
-                /  \\    /  \\_______  ____   ____   _____   /  \\    /  \\_______  ____   ____   _____   /  \\    /  \\_______  ____   ____   _____ \s
-                \\   \\/\\/   /\\_  __ \\/  _ \\ /  _ \\ /     \\  \\   \\/\\/   /\\_  __ \\/  _ \\ /  _ \\ /     \\  \\   \\/\\/   /\\_  __ \\/  _ \\ /  _ \\ /     \\\s
-                 \\        /  |  | \\(  <_> |  <_> )  Y Y  \\  \\        /  |  | \\(  <_> |  <_> )  Y Y  \\  \\        /  |  | \\(  <_> |  <_> )  Y Y  \\
-                  \\__/\\  /   |__|   \\____/ \\____/|__|_|  /   \\__/\\  /   |__|   \\____/ \\____/|__|_|  /   \\__/\\  /   |__|   \\____/ \\____/|__|_|  /
-                       \\/                              \\/         \\/                              \\/         \\/                              \\/\s
+                
+                
+                           .---.                                                                               ____  \s
+                          /. ./|                                                                             ,'  , `.\s
+                      .--'.  ' ;  __  ,-.   ,---.     ,---.     ,---.     ,---.     ,---.     ,---.       ,-+-,.' _ |\s
+                     /__./ \\ : |,' ,'/ /|  '   ,'\\   '   ,'\\   '   ,'\\   '   ,'\\   '   ,'\\   '   ,'\\   ,-+-. ;   , ||\s
+                 .--'.  '   \\' .'  | |' | /   /   | /   /   | /   /   | /   /   | /   /   | /   /   | ,--.'|'   |  ||\s
+                /___/ \\ |    ' '|  |   ,'.   ; ,. :.   ; ,. :.   ; ,. :.   ; ,. :.   ; ,. :.   ; ,. :|   |  ,', |  |,\s
+                ;   \\  \\;      :'  :  /  '   | |: :'   | |: :'   | |: :'   | |: :'   | |: :'   | |: :|   | /  | |--' \s
+                 \\   ;  `      ||  | '   '   | .; :'   | .; :'   | .; :'   | .; :'   | .; :'   | .; :|   : |  | ,    \s
+                  .   \\    .\\  ;;  : |   |   :    ||   :    ||   :    ||   :    ||   :    ||   :    ||   : |  |/     \s
+                   \\   \\   ' \\ ||  , ;    \\   \\  /  \\   \\  /  \\   \\  /  \\   \\  /  \\   \\  /  \\   \\  / |   | |`-'      \s
+                    :   '  |--"  ---'      `----'    `----'    `----'    `----'    `----'    `----'  |   ;/          \s
+                     \\   \\ ;                                                                         '---'           \s
+                      '---"                                                                                          \s
+                ^
                 """;
         System.out.println(message);
     }
@@ -40,15 +50,14 @@ public class InputHandler {
                 (1) Mean Price of all cars
                 (2) Mean Price of specific car type
                 (3) Count of Car Types
-        """;
+                """;
         System.out.println(message);
         return scanner.nextInt();
     }
     public int getFilterInput() {
         Scanner scanner = new Scanner(System.in);
         String message = """
-                \n
-                Stage 1 Menu: Enter filter option below
+                Enter filter option below
                 
                 (1) Filter by Car Type
                 (2) Filter by Car Price Bucket
@@ -62,11 +71,11 @@ public class InputHandler {
     public CarType getCarTypeInput() {
         Scanner scanner = new Scanner(System.in);
         String message = """
-                Stage 2 Menu: Which Car Type do you want?
+                Which Car Type do you want?
                 (1) PKW
                 (2) Transporter
                 (3) Motorcycle
-        """;
+                """;
         System.out.println(message);
         int carTypeChoice = scanner.nextInt();
         switch (carTypeChoice) {
@@ -87,7 +96,7 @@ public class InputHandler {
     public int getCarPriceBucketInput() {
         Scanner scanner = new Scanner(System.in);
         String message = """
-                Stage 2 Menu: Which Car Price Bucket do you want?
+                Which Car Price Bucket do you want?
                 
                 (1) 1 - 9,9k
                 (2) 10k - 14,9k
@@ -101,7 +110,7 @@ public class InputHandler {
     public int getCarManufacturerYearInput() {
         Scanner scanner = new Scanner(System.in);
         String message = """
-                Stage 2 Menu: Which Car Manufacturer Year do you want?
+                Which Car Manufacturer Year do you want? Please enter a year (e.g. 2025).
                 """;
         System.out.println(message);
         return scanner.nextInt();
@@ -110,7 +119,7 @@ public class InputHandler {
     public int getCarMileageInput() {
         Scanner scanner = new Scanner(System.in);
         String message = """
-                Stage 2 Menu: Which Car Mileage do you want?
+                Which Car Mileage do you want? Please enter a number.
                 """;
         System.out.println(message);
         return scanner.nextInt();
@@ -119,7 +128,7 @@ public class InputHandler {
     public double getPriceChangeInput() {
         Scanner scanner = new Scanner(System.in);
         String message = """
-                Stage 2 Menu: Amount of discount to apply (e.g. 0.15 for 15%)
+                Amount of discount to apply (e.g. 0.15 for 15%) -> Please enter a number between 1 and 100.
                 """;
         System.out.println(message);
         return scanner.nextDouble();
