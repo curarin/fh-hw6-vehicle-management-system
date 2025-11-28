@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        Path path = Paths.get("src", "main", "resources", "fahrzeuge.csv");
+        Path path = Paths.get("src", "main", "resources", "fahrzeuge_100k.csv");
         String delimiter = ";";
         boolean csvHasHeader = true;
         FileHandler file = new FileHandler(path, delimiter);
