@@ -38,6 +38,8 @@ public class FileHandler {
                     csvLineCounter++;
                 } else if (csvLineCounter > 0) {
                     String[] fields = line.split(this.delimiter);
+                    // ToDo > wenn eine String Line a.) falschen Delimiter hat oder b.) Null Values hat
+                    // ToDo > dann Exit aus dem csvLineCounter Iteration mit continue
                     for (String value : fields) {
                         csvLines.add(value);
                         csvLineCounter++;
