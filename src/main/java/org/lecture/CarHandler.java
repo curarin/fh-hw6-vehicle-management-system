@@ -22,7 +22,7 @@ public class CarHandler {
     public void printCarsByType(CarType wantedCarTypeFilter) {
         for (Car car : this.allCars) {
             if (car.getCarType().equals(wantedCarTypeFilter)) {
-                System.out.printf("%d | %s | %s | %s\n", car.getCarId(), car.getCarType(), car.getCarBrand(), car.getCarModel());
+                System.out.printf("%d \t| %s \t| %s \t| %s\n", car.getCarId(), car.getCarType().getGermanName(), car.getCarBrand(), car.getCarModel());
             }
         }
     }
@@ -54,7 +54,7 @@ public class CarHandler {
         }
         for (Car car : this.allCars) {
             if (car.getCarPrice() >= lowerBoundPrice && car.getCarPrice() <= upperBoundPrice) {
-                System.out.printf("%d | %.2f,- EUR | %s | %s\n", car.getCarId(), car.getCarPrice(), car.getCarBrand(), car.getCarModel());
+                System.out.printf("%d \t| %.2f,- EUR \t| %s \t| %s\n", car.getCarId(), car.getCarPrice(), car.getCarBrand(), car.getCarModel());
             }
         }
 
@@ -63,7 +63,7 @@ public class CarHandler {
     public void printCarsByManufacturerYear(int wantedManufactureryearFilter) {
         for (Car car : this.allCars) {
             if (car.getCarManufacturerYear() >= wantedManufactureryearFilter) {
-                System.out.printf("%d | %d | %s | %s\n", car.getCarId(), car.getCarManufacturerYear(), car.getCarBrand(), car.getCarModel());
+                System.out.printf("%d \t| %d \t| %s \t| %s\n", car.getCarId(), car.getCarManufacturerYear(), car.getCarBrand(), car.getCarModel());
             }
         }
 
@@ -72,10 +72,8 @@ public class CarHandler {
     public void printCarsByMileage(int wantedMileageFilter) {
         for (Car car : this.allCars) {
             if (car.getCarMileage() <= wantedMileageFilter) {
-                System.out.printf("%d | %d | %s | %s\n", car.getCarId(), car.getCarMileage(), car.getCarBrand(), car.getCarModel());
+                System.out.printf("%d \t| %d \t| %s \t| %s\n", car.getCarId(), car.getCarMileage(), car.getCarBrand(), car.getCarModel());
             }
         }
     }
-
-
 }
