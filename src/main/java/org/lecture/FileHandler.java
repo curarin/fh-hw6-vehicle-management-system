@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class FileHandler {
     Path filePath;
@@ -33,23 +34,41 @@ public class FileHandler {
             while ((line = reader.readLine()) != null) {
                 if (csvLineCounter == 0) {
                     String[] fields = line.split(this.delimiter);
+
                     this.csvColumnNames = line;
                     this.csvColumnCount = fields.length;
                     csvLineCounter++;
                 } else if (csvLineCounter > 0) {
-                    String[] fields = line.split(this.delimiter);
                     // ToDo > wenn eine String Line a.) falschen Delimiter hat oder b.) Null Values hat
                     // ToDo > dann Exit aus dem csvLineCounter Iteration mit continue
-                    for (String value : fields) {
-                        csvLines.add(value);
+                    if (hasCorrectDelimiter(line)) {
+                        String[] fields = line.split(this.delimiter);
+                        csvLines.addAll(Arrays.asList(fields));
                         csvLineCounter++;
-                }
+                    } else {
+                        int errorFoundInLineNumber = csvLineCounter + 1;
+                        System.err.println("Error reading csv line " + errorFoundInLineNumber + ". Wrong delimiter found.");
+                    }
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
         return csvLines;
+    }
+
+    private boolean hasCorrectDelimiter(String line) {
+        String[] possibleDelimiterValues = {";", ",", "|", "\\t"};
+        int countDelimiterFound = 0;
+
+        for (String possibleValue : possibleDelimiterValues) {
+            // Source: https://stackoverflow.com/questions/275944/how-do-i-count-the-number-of-occurrences-of-a-char-in-a-string
+            int count = line.length() - line.replace(possibleValue, "").length();
+            if (count > 0) {
+                countDelimiterFound++;
+            }
+        }
+        return countDelimiterFound <= 1;
     }
 
     public ArrayList<Car> parseFile(ArrayList<String> csvValues) {
