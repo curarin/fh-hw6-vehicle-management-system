@@ -9,8 +9,9 @@ public class Main {
     public static void main(String[] args) throws Exception {
         Path path = Paths.get("src", "main", "resources", "fahrzeuge.csv");
         String delimiter = ";";
+        boolean csvHasHeader = true;
         FileHandler file = new FileHandler(path, delimiter);
-        ArrayList<String> fileList = file.readFile();
+        ArrayList<String> fileList = file.readFile(csvHasHeader);
         ArrayList<Car> allCars = file.parseFile(fileList);
         CarHandler carHandler = new CarHandler(allCars);
         InputHandler inputHandler = new InputHandler();
