@@ -20,24 +20,27 @@ public class FileHandler {
         this.delimiter = delimiter;
     }
 
-    public ArrayList<String> readFile() {
+    public ArrayList<String> readFile(boolean csvHasHeader) {
         ArrayList<String> csvLines = new ArrayList<>();
         try (BufferedReader reader = Files.newBufferedReader(this.filePath)) {
             String line;
-            int i = 0;
+
+            // Wir skippen Header Line parsing wenn wir ein False übergeben
+            int csvLineCounter = 0;
+            if (!csvHasHeader) {
+                csvLineCounter = 1;
+            }
             while ((line = reader.readLine()) != null) {
-                if (i == 0) {
+                if (csvLineCounter == 0) {
                     String[] fields = line.split(this.delimiter);
-                    csvColumnNames = line;
-                    for (String value: fields) {
-                        csvColumnCount++;
-                        i++;
-                    }
-                } else if (i > 0) {
+                    this.csvColumnNames = line;
+                    this.csvColumnCount = fields.length;
+                    csvLineCounter++;
+                } else if (csvLineCounter > 0) {
                     String[] fields = line.split(this.delimiter);
                     for (String value : fields) {
                         csvLines.add(value);
-                        i++;
+                        csvLineCounter++;
                 }
                 }
             }
