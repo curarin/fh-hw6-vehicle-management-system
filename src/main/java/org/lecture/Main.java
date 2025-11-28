@@ -61,7 +61,11 @@ public class Main {
 
                     switch (analysisInput) {
                         case 1 -> analyticsHandler.calculateMeanPriceAllCars();
-                        case 2 -> analyticsHandler.calculateCarCountPerType();
+                        case 2 -> {
+                            CarType wantedCarType = inputHandler.getCarTypeInput();
+                            analyticsHandler.calculateMeanPricePerCarType(wantedCarType);
+                        }
+                        case 3 -> analyticsHandler.calculateCarCountPerType();
                     }
                 }
                 case 0 -> isRunning = false;

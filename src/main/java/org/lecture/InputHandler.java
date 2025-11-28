@@ -36,9 +36,10 @@ public class InputHandler {
         Scanner scanner = new Scanner(System.in);
         String message = """
                 What kind of analysis is needed?
-                
-                (1) Mean Price of cars
-                (2) Count of Car Types
+
+                (1) Mean Price of all cars
+                (2) Mean Price of specific car type
+                (3) Count of Car Types
         """;
         System.out.println(message);
         return scanner.nextInt();
