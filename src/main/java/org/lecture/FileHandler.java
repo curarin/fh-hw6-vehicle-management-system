@@ -100,7 +100,7 @@ public class FileHandler {
                 bufferedWriter.newLine();
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.err.println("Error writing to csv file.");
         }
     }
 
