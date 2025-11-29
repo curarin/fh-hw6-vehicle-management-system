@@ -53,6 +53,7 @@ public class FileHandler {
                 }
             }
         } catch (IOException e) {
+            System.err.println("Error reading csv file > either file not found or file can't be read.");
             e.printStackTrace();
         }
         return csvLines;
