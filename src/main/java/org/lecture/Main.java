@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         // Hab einen Fake Datensatz mit 100k Entries erstellt - über _100k.csv aufrufbar
         // Für Abgabe ändern auf fahrzeuge.csv
-        Path path = Paths.get("src", "main", "resources", "fahrzeuge_100k.csv");
+        Path path = Paths.get("src", "main", "resources", "fahrzeuge.csv");
         String delimiter = ";";
         boolean csvHasHeader = true;
         FileHandler file = new FileHandler(path, delimiter);
