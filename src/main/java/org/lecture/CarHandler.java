@@ -9,13 +9,17 @@ public class CarHandler {
         this.allCars = allCars;
     }
 
-    public void changePriceByType(CarType wantedCarTypeFilter, double wantedPriceReductionInPercent) throws Exception {
-        for (Car car : allCars) {
-            if (car.getCarType().equals(wantedCarTypeFilter)) {
-                double carPriceReduction = car.getCarPrice() * wantedPriceReductionInPercent;
-                String newCarPrice = String.valueOf(car.getCarPrice() - carPriceReduction);
-                car.setCarPrice(newCarPrice);
+    public void changePriceByType(CarType wantedCarTypeFilter, double wantedPriceReductionInPercent) {
+        try {
+            for (Car car : allCars) {
+                if (car.getCarType().equals(wantedCarTypeFilter)) {
+                    double carPriceReduction = car.getCarPrice() * wantedPriceReductionInPercent;
+                    String newCarPrice = String.valueOf(car.getCarPrice() - carPriceReduction);
+                    car.setCarPrice(newCarPrice);
+                }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
