@@ -15,6 +15,7 @@ public class FileHandler {
     String csvColumnNames;
     int csvColumnCount = 0;
     String delimiter;
+    Helper helperFunction = new Helper();
 
     public FileHandler(Path filePath, String delimiter) {
         this.filePath = filePath;
@@ -41,7 +42,7 @@ public class FileHandler {
                 } else if (csvLineCounter > 0) {
                     // Überprüfen, ob der korrekte Delimiter vorhanden ist als auch alle Werte befüllt sind
                     // Mittels helper Functions
-                    if (hasCorrectDelimiter(line) && !hasNullValues(line)) {
+                    if (helperFunction.hasCorrectDelimiter(line, this.delimiter) && !helperFunction.hasNullValues(line, this.delimiter)) {
                         String[] fields = line.split(this.delimiter);
                         csvLines.addAll(Arrays.asList(fields));
                         csvLineCounter++;
@@ -56,31 +57,6 @@ public class FileHandler {
         }
         return csvLines;
     }
-
-    private boolean hasCorrectDelimiter(String line) {
-        String[] possibleDelimiterValues = {";", ",", "|", "\\t"};
-        int countDelimiterFound = 0;
-
-        for (String possibleValue : possibleDelimiterValues) {
-            // Source: https://stackoverflow.com/questions/275944/how-do-i-count-the-number-of-occurrences-of-a-char-in-a-string
-            int count = line.length() - line.replace(possibleValue, "").length();
-            if (count > 0) {
-                countDelimiterFound++;
-            }
-        }
-        return countDelimiterFound <= 1;
-    }
-
-    private boolean hasNullValues(String line) {
-        String[] fields = line.split(this.delimiter);
-        for (String field : fields) {
-            if (field.isEmpty()) {
-                return true;
-            }
-        }
-        return false;
-    }
-
 
     public ArrayList<Car> parseFile(ArrayList<String> csvValues) {
         ArrayList<Car> cars = new ArrayList<>();
