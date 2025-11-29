@@ -74,7 +74,7 @@ public class Car {
         if (Double.parseDouble(carPrice) > 0) {
             this.carPrice = Double.parseDouble(carPrice);
         } else {
-            throw new Exception("Invalid car price - price has to be > 0 - we want to earn money, doh.");
+            throw new Exception("Invalid car price - price has to be > 0 - we want to earn money, doh > Value was.");
         }
     }
 

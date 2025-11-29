@@ -13,7 +13,7 @@ public class CarHandler {
         try {
             for (Car car : allCars) {
                 if (car.getCarType().equals(wantedCarTypeFilter)) {
-                    double carPriceReduction = car.getCarPrice() * wantedPriceReductionInPercent;
+                    double carPriceReduction = car.getCarPrice() * wantedPriceReductionInPercent / 100;
                     String newCarPrice = String.valueOf(car.getCarPrice() - carPriceReduction);
                     car.setCarPrice(newCarPrice);
                 }
