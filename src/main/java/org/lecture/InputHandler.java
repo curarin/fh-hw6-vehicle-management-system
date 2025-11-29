@@ -62,7 +62,7 @@ public class InputHandler {
                 Enter filter option below
                 
                 (1) Filter by Car Type
-                (2) Filter by Car Price Bucket
+                (2) Filter by Car Price Range
                 (3) Filter by Car Manufacturer Year
                 (4) Filter by Car Mileage
                 """;
@@ -95,18 +95,18 @@ public class InputHandler {
         }
     }
 
-    public int getCarPriceBucketInput() {
+    public int[] getCarPriceRange() {
+        int []carPriceRange = {0, 0};
         Scanner scanner = new Scanner(System.in);
-        String message = """
-                Which Car Price Bucket do you want?
-                
-                (1) 1 - 9,9k
-                (2) 10k - 14,9k
-                (3) 15k - 19,9k
-                (4) 20k - 29,9k
-                """;
-        System.out.println(message);
-        return scanner.nextInt();
+        System.out.println("Enter car price (lower bound):");
+        carPriceRange[0] = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("Enter car price (upper bound):");
+        carPriceRange[1] = scanner.nextInt();
+        scanner.nextLine();
+
+        return carPriceRange;
     }
 
     public int getCarManufacturerYearInput() {

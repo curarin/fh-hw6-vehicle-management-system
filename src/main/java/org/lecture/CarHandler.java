@@ -31,31 +31,9 @@ public class CarHandler {
         }
     }
 
-    public void printCarsByPrice(int wantedPriceBucketFilter) {
-        int lowerBoundPrice;
-        int upperBoundPrice;
-        switch (wantedPriceBucketFilter) {
-            case 1 -> {
-                lowerBoundPrice = 1;
-                upperBoundPrice = 9999;
-            }
-            case 2 -> {
-                lowerBoundPrice = 10000;
-                upperBoundPrice = 14999;
-            }
-            case 3 -> {
-                lowerBoundPrice = 15000;
-                upperBoundPrice = 19999;
-            }
-            case 4 -> {
-                lowerBoundPrice = 20000;
-                upperBoundPrice = 29999;
-            }
-            default -> {
-                lowerBoundPrice = 30000;
-                upperBoundPrice = 1000000000;
-            }
-        }
+    public void printCarsByPrice(int[] wantedPriceBucketFilter) {
+        int lowerBoundPrice = wantedPriceBucketFilter[0];
+        int upperBoundPrice = wantedPriceBucketFilter[1];
         for (Car car : this.allCars) {
             if (car.getCarPrice() >= lowerBoundPrice && car.getCarPrice() <= upperBoundPrice) {
                 System.out.printf("%d \t| %.2f,- EUR \t| %s \t| %s\n", car.getCarId(), car.getCarPrice(), car.getCarBrand(), car.getCarModel());

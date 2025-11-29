@@ -35,9 +35,9 @@ public class Main {
                             carHandler.printCarsByType(wantedCarType);
                         }
                         case 2 -> {
-                            int choice = inputHandler.getCarPriceBucketInput();
+                            int[] choices = inputHandler.getCarPriceRange();
                             System.out.println("List of all cars with chosen Price Bucket");
-                            carHandler.printCarsByPrice(choice);
+                            carHandler.printCarsByPrice(choices);
                         }
                         case 3 -> {
                             int wantedYear = inputHandler.getCarManufacturerYearInput();
